@@ -1,3 +1,5 @@
+package class02;
+
 public class BlockTest {
     static int a = 123;
 

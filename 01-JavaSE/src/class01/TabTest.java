@@ -1,3 +1,5 @@
+package class01;
+
 public class TabTest {
     public static void main(String[] args) {
         System.out.println("123456\t111");

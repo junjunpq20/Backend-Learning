@@ -1,3 +1,5 @@
+package class02;
+
 public class FloatTest {
     public static void main(String[] args) {
         double d1 = 123;
