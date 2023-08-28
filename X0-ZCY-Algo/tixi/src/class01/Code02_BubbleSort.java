@@ -3,19 +3,15 @@ package class01;
 import java.util.Arrays;
 
 public class Code02_BubbleSort {
-    public static int[] selectionSort(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            int minIdx = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[minIdx]) {
-                    minIdx = j;
+    public static int[] bubbleSort(int[] arr) {
+        for (int i = arr.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
                 }
             }
-
-            if (minIdx != i) {
-                swap(arr, i, minIdx);
-            }
         }
+
         return arr;
     }
 
@@ -50,7 +46,7 @@ public class Code02_BubbleSort {
                 int[] input = randomArray(length);
 
                 int[] expected = bf(Arrays.copyOf(input, input.length));
-                int[] actual = selectionSort(Arrays.copyOf(input, input.length));
+                int[] actual = bubbleSort(Arrays.copyOf(input, input.length));
                 if (!Arrays.equals(expected, actual)) {
                     System.out.println(Arrays.toString(expected));
                     System.out.println(Arrays.toString(actual));
