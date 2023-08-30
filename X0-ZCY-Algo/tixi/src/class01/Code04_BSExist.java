@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Code04_BSExist {
     public static boolean exist(int[] sortedArr, int target) {
-        if (sortedArr == null || sortedArr.length == 0) return true;
+        if (sortedArr == null || sortedArr.length == 0) return false;
 
         int L = 0, R = sortedArr.length - 1, M, cur;
 
@@ -21,7 +21,7 @@ public class Code04_BSExist {
             }
         }
 
-        return sortedArr[L] == sortedArr[R];
+        return sortedArr[L] == target;
     }
 
     public static boolean bf(int[] sortedArr, int num) {

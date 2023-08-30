@@ -2,9 +2,9 @@ package class01;
 
 import java.util.Arrays;
 
-public class Code05_BSNearLeft {
+public class Code06_BSNearRight {
 
-    // 在arr上，找满足>=value的最左位置
+    // 在arr上，找满足<=value的最右位置
     public static int find(int[] sortedArr, int target) {
         if (sortedArr == null || sortedArr.length == 0) return -1;
 
@@ -14,11 +14,11 @@ public class Code05_BSNearLeft {
             M = L + ((R - L) >> 1);
             cur = sortedArr[M];
 
-            if (cur >= target) {
+            if (cur > target) {
                 R = M - 1;
-                res = M;
             } else {
                 L = M + 1;
+                res = M;
             }
         }
 
@@ -26,8 +26,8 @@ public class Code05_BSNearLeft {
     }
 
     public static int bf(int[] sortedArr, int num) {
-        for (int i = 0; i < sortedArr.length; i++) {
-            if (sortedArr[i] >= num) {
+        for (int i = sortedArr.length - 1; i >= 0; i--) {
+            if (sortedArr[i] <= num) {
                 return i;
             }
         }
