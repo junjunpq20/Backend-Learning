@@ -1,21 +1,21 @@
 package utils;
 
 public class ListNode {
-    public int value;
+    public int val;
     public ListNode next;
     public ListNode prev;
 
-    public ListNode(int value) {
-        this.value = value;
+    public ListNode(int val) {
+        this.val = val;
     }
 
-    public ListNode(int value, ListNode next) {
-        this.value = value;
+    public ListNode(int val, ListNode next) {
+        this.val = val;
         this.next = next;
     }
 
-    public ListNode(int value, ListNode next, ListNode prev) {
-        this.value = value;
+    public ListNode(int val, ListNode next, ListNode prev) {
+        this.val = val;
         this.next = next;
         this.prev = prev;
     }
@@ -23,7 +23,7 @@ public class ListNode {
     public static void printLinkedList(ListNode head) {
         System.out.print("Linked List: ");
         while (head != null) {
-            System.out.print(head.value + " ");
+            System.out.print(head.val + " ");
             head = head.next;
         }
         System.out.println();
@@ -34,13 +34,13 @@ public class ListNode {
         System.out.print("Double Linked List: ");
         ListNode end = null;
         while (head != null) {
-            System.out.print(head.value + " ");
+            System.out.print(head.val + " ");
             end = head;
             head = head.next;
         }
         System.out.print("| ");
         while (end != null) {
-            System.out.print(end.value + " ");
+            System.out.print(end.val + " ");
             end = end.prev;
         }
         System.out.println();
