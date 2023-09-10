@@ -22,7 +22,7 @@ public class Code01_MergeSort {
   private static void mergeSortRecurHelper(int[] arr, int[] aux, int L, int R) {
     if (L >= R) return;
 
-    int M = L + ((R - L) >> 1);
+    int M = (L + R) >>> 1;
     mergeSortRecurHelper(arr, aux, L, M);
     mergeSortRecurHelper(arr, aux, M + 1, R);
     merge(arr, aux, L, M, R);
