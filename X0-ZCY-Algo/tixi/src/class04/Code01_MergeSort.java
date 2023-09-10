@@ -4,10 +4,11 @@ public class Code01_MergeSort {
   public static void mergeSortIter(int[] arr) {
     if (arr == null) return;
 
+    int[] aux = new int[arr.length];
     int N = arr.length;
     for (int stepSize = 1; stepSize < N; stepSize *= 2) {
       for (int L = 0; L + stepSize < arr.length; L += stepSize * 2) {
-        merge(arr, L, L + stepSize - 1, Math.min(L + stepSize * 2 - 1, N - 1));
+        merge(arr, aux, L, L + stepSize - 1, Math.min(L + stepSize * 2 - 1, N - 1));
       }
     }
   }
@@ -15,29 +16,33 @@ public class Code01_MergeSort {
   public static void mergeSortRecur(int[] arr) {
     if (arr == null) return;
 
-    mergeSortRecurHelper(arr, 0, arr.length - 1);
+    mergeSortRecurHelper(arr, new int[arr.length], 0, arr.length - 1);
   }
 
-  private static void mergeSortRecurHelper(int[] arr, int L, int R) {
+  private static void mergeSortRecurHelper(int[] arr, int[] aux, int L, int R) {
     if (L >= R) return;
 
     int M = L + ((R - L) >> 1);
-    mergeSortRecurHelper(arr, L, M);
-    mergeSortRecurHelper(arr, M + 1, R);
-    merge(arr, L, M, R);
+    mergeSortRecurHelper(arr, aux, L, M);
+    mergeSortRecurHelper(arr, aux, M + 1, R);
+    merge(arr, aux, L, M, R);
   }
 
-  private static void merge(int[] arr, int L, int M, int R) {
+  private static void merge(int[] arr, int[] aux, int L, int M, int R) {
     if (L >= R) return;
 
-    int[] help = new int[R - L + 1];
-    int p1 = L, p2 = M + 1, i = 0;
-
-    while (p1 <= M || p2 <= R) {
-      help[i++] = p2 > R || p1 <= M && arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
+    for (int k = L; k <= R; k++) {
+      aux[k] = arr[k];
     }
 
-    System.arraycopy(help, 0, arr, L, help.length);
+    int p1 = L, p2 = M + 1;
+    for (int k = L; k <= R; k++) {
+      if (p2 > R || p1 <= M && aux[p1] < aux[p2]) {
+        arr[k] = aux[p1++];
+      } else {
+        arr[k] = aux[p2++];
+      }
+    }
   }
 
   // for test
