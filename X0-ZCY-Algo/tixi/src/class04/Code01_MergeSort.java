@@ -1,9 +1,18 @@
 package class04;
 
-import java.util.Arrays;
-
 public class Code01_MergeSort {
-  public static void mergeSort1(int[] arr) {
+  public static void mergeSortIter(int[] arr) {
+    if (arr == null) return;
+
+    int N = arr.length;
+    for (int stepSize = 1; stepSize < N; stepSize *= 2) {
+      for (int L = 0; L + stepSize < arr.length; L += stepSize * 2) {
+        merge(arr, L, L + stepSize - 1, Math.min(L + stepSize * 2 - 1, N - 1));
+      }
+    }
+  }
+
+  public static void mergeSortRecur(int[] arr) {
     if (arr == null) return;
 
     mergeSortRecurHelper(arr, 0, arr.length - 1);
@@ -29,11 +38,6 @@ public class Code01_MergeSort {
     }
 
     System.arraycopy(help, 0, arr, L, help.length);
-  }
-
-  public static int[] mergeSortIter(int[] nums) {
-    Arrays.sort(nums);
-    return nums;
   }
 
   // for test
@@ -96,7 +100,7 @@ public class Code01_MergeSort {
     for (int i = 0; i < testTime; i++) {
       int[] arr1 = generateRandomArray(maxSize, maxValue);
       int[] arr2 = copyArray(arr1);
-      mergeSort1(arr1);
+      mergeSortRecur(arr1);
       mergeSortIter(arr2);
       if (!isEqual(arr1, arr2)) {
         System.out.println("出错了！");
