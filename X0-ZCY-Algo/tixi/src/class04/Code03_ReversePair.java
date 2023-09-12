@@ -29,19 +29,12 @@ public class Code03_ReversePair {
     int count = 0;
     int p1 = L, p2 = M + 1;
 
-    while (p1 <= M && p2 <= R) {
-      if (aux[p1] > aux[p2]) {
-        count += (M - p1 + 1);
-        p2++;
-      } else {
-        p1++;
-      }
-    }
-
-    p1 = L;
-    p2 = M + 1;
     for (int k = L; k <= R; k++) {
-      if (p2 > R || p1 <= M && aux[p1] < aux[p2]) {
+      if (p1 <= M && p2 <= R && aux[p1] > aux[p2]) {
+        count += (M - p1 + 1);
+      }
+
+      if (p2 > R || p1 <= M && aux[p1] <= aux[p2]) {
         arr[k] = aux[p1++];
       } else {
         arr[k] = aux[p2++];
