@@ -1,6 +1,18 @@
 package class05;
 
 // https://leetcode.com/problems/count-of-range-sum/
+// Given an integer array nums and two integers lower and upper, return the number of range sums
+// that lie in [lower, upper] inclusive.
+//
+// Range sum S(i, j) is defined as the sum of the elements in nums between indices i and j
+// inclusive, where i <= j.
+
+// 已知 lower, upper
+// 1. 构建前缀和数组，方便计算 Sum(i, j)，定义 PreSum(i) = Sum(0, i)
+// 2. 假设我知道了 PreSum(j) = X, 又如果我知道 PreSum(i) lies in [X - upper, X - lower]
+// 那么可以断定 Sum(i + 1, j) lies in [lower, upper]，因为 PreSum(i) + Sum(i + 1, j) = PreSum(j)
+// 3. 对 PreSum array 做归并排序，在 merge 时，对右数组的每一个 PreSum(j)，利用滑动窗口找到所有满足条件的左数组的 PreSum(i)
+// 4. 由于归并排序时左右子数组时已经排好序且递增的，所以滑动窗口的 left right 值只会增加，不会减少，这样就保证了 merge 的效率是正常的
 public class Code01_CountOfRangeSum {
   class Solution {
     public int countRangeSum(int[] nums, int lower, int upper) {
