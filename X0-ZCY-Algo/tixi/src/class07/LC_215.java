@@ -5,7 +5,7 @@ public class LC_215 {
   class Solution {
     // Time complexity: O(N), Space complexity: O(1)
     // Why?
-    // 1. The partition function is O(N)
+    // 1. The partition function is O(N) in total, N + N / 2 + N / 4 + ... + 1 = 2N
     // 2. The partition function is in-place
     public int findKthLargest(int[] nums, int k) {
       int N = nums.length;
