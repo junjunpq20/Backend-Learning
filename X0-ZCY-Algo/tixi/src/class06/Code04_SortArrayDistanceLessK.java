@@ -6,20 +6,19 @@ import java.util.PriorityQueue;
 public class Code04_SortArrayDistanceLessK {
 
   public static void sortedArrDistanceLessK(int[] arr, int k) {
-    if (arr == null || arr.length < 2) return;
+    if (arr == null) return;
 
-    PriorityQueue<Integer> minPQ = new PriorityQueue<>();
-    int i;
-    for (i = 0; i <= Math.min(k, arr.length - 1); i++) {
-      minPQ.add(arr[i]);
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    for (int i = 0; i <= Math.min(arr.length - 1, k); i++) {
+      minHeap.add(arr[i]);
     }
 
-    int j = 0;
-    while (!minPQ.isEmpty()) {
-      arr[j++] = minPQ.remove();
+    int i = 0, j = k + 1;
+    while (!minHeap.isEmpty()) {
+      arr[i++] = minHeap.remove();
 
-      if (i < arr.length) {
-        minPQ.add(arr[i++]);
+      if (j < arr.length) {
+        minHeap.add(arr[j++]);
       }
     }
   }
