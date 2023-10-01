@@ -1,28 +1,14 @@
 package class06;
 
 import java.util.Arrays;
-import java.util.PriorityQueue;
 
 public class Code04_SortArrayDistanceLessK_Judge {
 
   // 已知一个几乎有序的数组。几乎有序是指，如果把数组排好顺序的话，每个元素移动的距离一定不超过k,并且k相对于数组长度来说是比较小的。
   // 请选择一个合适的排序策略，对这个数组进行排序。
   public static void sortedArrDistanceLessK(int[] arr, int k) {
-    if (arr == null) return;
+    // TODO
 
-    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-    for (int i = 0; i <= Math.min(arr.length - 1, k); i++) {
-      minHeap.add(arr[i]);
-    }
-
-    int i = 0, j = k + 1;
-    while (!minHeap.isEmpty()) {
-      arr[i++] = minHeap.remove();
-
-      if (j < arr.length) {
-        minHeap.add(arr[j++]);
-      }
-    }
   }
 
   // for test
