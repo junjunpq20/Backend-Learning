@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Code04_SortArrayDistanceLessK_Judge {
 
   public static void sortedArrDistanceLessK(int[] arr, int k) {
+    // TODO
   }
 
   // for test
